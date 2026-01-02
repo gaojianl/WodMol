@@ -34,7 +34,7 @@ Before training, you need to generate a task embedding file (`.npy`). You have t
 
 Use this for standard protein targets (targetname + MOA) or ADME properties (propertyname + adme).
 ```
-python taskemb.py \
+python run.py --mode taskemb \
     --moldata CHEMBL218 \              # Dataset name
     --target AKT1 \                    # Target name (e.g., 'AKT1') or Property name (e.g., 'Solubility')
     --keyword inhibitor \              # MOA: inhibitor, agonist, degrader, modulator, allosteric inhibitor/modulator, or 'adme'
@@ -44,7 +44,7 @@ python taskemb.py \
 
 Use this if you have a specific description text file (e.g., desc.txt).
 ```
-python taskemb.py \
+python run.py --mode taskemb \
     --moldata MyData \                 # Dataset name
     --target UnknownTarget \           # Required argument (placeholder name is fine here)
     --task_desc desc.txt \             # Path to your custom description text file
@@ -61,10 +61,10 @@ Place your files (`{name}_train.csv`, `{name}_test.csv`) in `dataset/raw/`.
 * **Censored Data:** Ensure `standard_relation` contains (`>`, `<`, `=`). **Note:** If you applied negative log, invert the signs (e.g., `>` becomes `<`).
 
 **Step 2: Generate Conditions**
-Run `condemb.py` to extract experimental conditions using the LLM (generates `{name}_train_llamacond.csv` `{name}_test_llamacond.csv`).
+Run `run.py --mode condemb` to extract experimental conditions using the LLM (generates `{name}_train_llamacond.csv` `{name}_test_llamacond.csv`).
 
 ```
-python condemb.py \
+python run.py --mode condemb \
     --moldata CHEMBL218 \              # Dataset name (Processing {name}_train.csv and {name}_test.csv)
     --device cuda:0 \                  # Device to run the extraction model
     --testing False                    # Set True if you only want to process the test dataset
@@ -80,10 +80,10 @@ python condemb.py \
 > **⚡ Optimization Tip**
 > The LLM extraction process can be slow. To improve efficiency, for **data batches sharing identical experimental conditions**, you only need to extract conditions for **one representative sample** and copy them to all other samples in the same batch.
 
-#### c. Preprocess Graph Data Convert the condition-annotated CSV files into PyTorch Geometric (.pt) files
+#### c. Preprocess
 Preprocess Graph Data Convert the condition-annotated CSV files into PyTorch Geometric (.pt) files in `dataset/processed/`.
 ```
-python preprocess.py \
+python run.py --mode preprocess \
     --moldata CHEMBL218 \              # Dataset name
     --numtasks 1 \                     # Number of tasks/labels
     --label_col standard_value \       # Label column(s). For multi-task, use commas: IC50,EC50,Ki
@@ -114,7 +114,7 @@ Once you have determined your task settings, you can execute the fine-tuning scr
 Here is an example command to run fine-tuning on the `C218` dataset:
 
 ```
-python run_finetune.py \
+python run.py --mode finetune \
     --moldata CHEMBL218 \                     # Dataset name (Look for {name}_train.csv in dataset/)
     --pretrain checkpoints/model_CSLoss.pkl \ # Path to pre-trained weights
     --pi None \                               # Task ID: Integer for known tasks, None for unknown/non-protein
@@ -137,9 +137,9 @@ To reproduce the experimental results reported in the paper, you can execute the
 The datasets are provided in the `CondACT`, `CondACT_few`, and `CondADME` folders. Run the following commands to reproduce the experiments:
 
 ```
-python run_condact.py --moldata <DATASET_NAME>
-python run_condactfew.py --moldata <DATASET_NAME>
-python run_condadme.py --moldata <DATASET_NAME>
+python run.py --mode condact --moldata <DATASET_NAME>
+python run.py --mode condactfew --moldata <DATASET_NAME>
+python run.py --mode condadme --moldata <DATASET_NAME>
 ```
 
 ### 3. Testing / Zero-shot Prediction
@@ -154,7 +154,7 @@ Before running prediction, please ensure that your testing datasets and taskembe
 **Execution Command:**
 
 ```
-python run_zeroshot.py \
+python run.py --mode zeroshot \
     --moldata CHEMBL218 \                     # Dataset name (Look for {name}_test.csv in dataset/)
     --pretrain checkpoints/model_CSLoss.pkl \ # Path to pre-trained weights (model_CSLoss.pkl is recommended) or fine-tuned checkpoint file saved in Section 2
     --pi None \                               # Task ID: Integer for known tasks, None for unknown/Zero-shot
