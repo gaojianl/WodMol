@@ -1,6 +1,6 @@
 # CondMol
 
-![](img/Framework.jpg)
+![](img/Framework.jpg) 
 
 This is a Pytorch implementation of CondMol
 Information regarding the activity pre-training dataset can be found in the `dataset/` folder.
