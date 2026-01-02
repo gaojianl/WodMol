@@ -26,8 +26,8 @@ conda activate CondMol
 
 ## Usage
 
-#### 1. Dataset Preparation
-##### Generate Task Embeddings
+### 1. Dataset Preparation
+#### a. Generate Task Embeddings
 Before training, you need to generate a task embedding file (`.npy`). You have two options to generate the description:
 1.  **LLM Generation (Default)**: Provide the target name and a keyword (MOA or 'adme'). The script will use Llama-3.1 to generate a scientific description.
 2.  **Custom Description**: Provide a `.txt` file containing your own description using `--task_desc`.
@@ -52,7 +52,7 @@ python taskemb.py \
     --device cuda:0                    # Device to run the embedding model
 ```
 
-##### Generate Condition Embeddings & Preprocessing
+#### b. Generate Condition Embeddings & Preprocessing
 
 **Step 1: Prepare Raw Data**
 Place your files (`{name}_train.csv`, `{name}_test.csv`) in `dataset/raw/`.
@@ -80,8 +80,8 @@ python condemb.py \
 > **⚡ Optimization Tip**
 > The LLM extraction process can be slow. To improve efficiency, for **data batches sharing identical experimental conditions**, you only need to extract conditions for **one representative sample** and copy them to all other samples in the same batch.
 
-**Step 3: Preprocess Graph Data Convert the condition-annotated CSV files into PyTorch Geometric (.pt) files.**
-
+#### c. Preprocess Graph Data Convert the condition-annotated CSV files into PyTorch Geometric (.pt) files
+Preprocess Graph Data Convert the condition-annotated CSV files into PyTorch Geometric (.pt) files in `dataset/processed/`.
 ```
 python preprocess.py \
     --moldata CHEMBL218 \              # Dataset name
@@ -92,7 +92,7 @@ python preprocess.py \
 ```
 
 
-#### 2. Fine-tuning on Downstream Tasks
+### 2. Fine-tuning on Downstream Tasks
 
 To fine-tune the model on specific tasks, **please first ensure your training&testing datasets and taskembeding file are prepared following the instructions in Section 1**. Then, configure the `pi` (task ID) and `rela` (relation) arguments based on your task type:
 
@@ -142,7 +142,7 @@ python run_condactfew.py --moldata <DATASET_NAME>
 python run_condadme.py --moldata <DATASET_NAME>
 ```
 
-#### 3. Testing / Zero-shot Prediction
+### 3. Testing / Zero-shot Prediction
 
 **Prerequisites:**
 Before running prediction, please ensure that your testing datasets and taskembeding file are prepared following the instructions in Section 1
