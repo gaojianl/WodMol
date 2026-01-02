@@ -19,10 +19,10 @@ Please ensure your hardware (specifically GPU VRAM) is sufficient to support run
 
 ### Setup
 You can execute the following command to create the conda environment:
-'''
+```
 conda create --name ConMol --file requirements.yml
 conda activate CondMol
-'''
+```
 You Need to Get Access to Llama-3.1 from HuggingFace
 
 ## Usage
