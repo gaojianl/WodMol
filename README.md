@@ -4,7 +4,7 @@
 
 This is a Pytorch implementation of CondMol
 Information regarding the activity pre-training dataset can be found in the `dataset/` folder.
-Pre-trained model parameters are located in the `checkpoints/` folder:
+Pre-trained model parameters can be downloaded from https://zenodo.org/uploads/18167988, then extracted to the `checkpoints/` folder:
 * **`model.pkl`**: Trained without considering censored data information.
 * **`model_CSLoss.pkl`**: Trained incorporating censored data information.
 * **`model_noleakage.pkl`**: The pre-training dataset excludes assay data related to the 29 targets in CondACT (to avoid data leakage).
@@ -172,3 +172,4 @@ python run.py --mode zeroshot \
 
 
 ## Citation
+
