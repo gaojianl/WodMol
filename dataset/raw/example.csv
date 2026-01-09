@@ -1,0 +1,2 @@
+assay_chembl_id,target_chembl_id,target_pref_name,molecule_chembl_id,canonical_smiles,bao_label,standard_relation,standard_type,standard_units,standard_value,assay_description,data_validity_comment,assay_organism,assay_tissue,assay_cell_type,data_validity_description
+CHEMBL1799629,CHEMBL204,Thrombin,CHEMBL1797905,O=C(/C=C/c1ccccc1)C(=O)NC1CC1,single protein format,=,Inhibition,%,0.171,Inhibition of thrombin at 20 uM preincubated for 15 mins before Boc-Val-Pro-Arg-AMC substrate addition measured after 10 mins by microtiter fluorescence plate reader analysis,,,,,
