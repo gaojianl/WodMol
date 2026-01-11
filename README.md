@@ -4,7 +4,7 @@
 
 This is a Pytorch implementation of CondMol
 Information regarding the activity pre-training dataset can be found in the `dataset/` folder.
-Pre-trained model parameters can be downloaded from https://zenodo.org/uploads/18167988, then extracted to the `checkpoints/` folder:
+Pre-trained model parameters can be downloaded from https://drive.google.com/file/d/1BjL2PjrnE0UVObQKFWRz8Oioe-rbkZ21/view?usp=sharing, then extracted to the `checkpoints/` folder:
 * **`model.pkl`**: Trained without considering censored data information.
 * **`model_CSLoss.pkl`**: Trained incorporating censored data information.
 * **`model_noleakage.pkl`**: The pre-training dataset excludes assay data related to the 29 targets in CondACT (to avoid data leakage).
@@ -140,7 +140,7 @@ You are encouraged to adjust these parameters to optimize performance for your s
 
 
 To reproduce the experimental results reported in the paper, you can execute the following scripts. 
-The datasets are provided in the `CondACT`, `CondACT_few`, and `CondADME` folders (https://zenodo.org/uploads/18167988). Run the following commands to reproduce the experiments:
+The datasets are provided in the `CondACT`, `CondACT_few`, and `CondADME` folders (https://drive.google.com/drive/folders/1Zm6LMLDmZv7K9WyxgJR78nC1DiizkHRX?usp=sharing). Run the following commands to reproduce the experiments:
 
 ```
 python run.py --mode condact --moldata <DATASET_NAME>
@@ -172,4 +172,5 @@ python run.py --mode zeroshot \
 
 
 ## Citation
+
 
