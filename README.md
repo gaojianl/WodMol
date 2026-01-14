@@ -125,7 +125,7 @@ python run.py --mode finetune \
     --pretrain checkpoints/model_CSLoss.pkl \ # Path to pre-trained weights
     --pi None \                               # Task ID: Integer for known tasks, None for unknown/non-protein
     --rela False \                            # Relation: Set True if dataset has censored data (>, <)
-    --task_file CHEMBL218.npy \                   # Path to task embedding file
+    --task_file CHEMBL218.npy \               # Path to task embedding file
     --train_epoch 30 \                        # Number of training epochs
     --batch_size 32 \                         # Input batch size
     --lr 1e-3 \                               # Learning rate
@@ -164,6 +164,7 @@ python run.py --mode zeroshot \
     --moldata CHEMBL218 \                     # Dataset name (Look for {name}_test.csv in dataset/)
     --pretrain checkpoints/model_CSLoss.pkl \ # Path to pre-trained weights (model_CSLoss.pkl is recommended) or fine-tuned checkpoint file saved in Section 2
     --pi None \                               # Task ID: Integer for known tasks, None for unknown/Zero-shot
+    --ft False \                              # Set True if you are using a fine-tuned checkpoint
     --task_file tasks.npy \                   # Path to the task embedding file (.npy)
     --batch_size 32 \                         # Input batch size
     --seed 426 \                              # Random seed for reproducibility
