@@ -176,7 +176,7 @@ if __name__ == '__main__':
     if pi_lower in ['none', 'null', 'nan', '']:
         pi = None
     else:
-        pi = int(pi)
+        pi = int(args.pi)
     
     logf = 'log/Finetune_{}.log'.format(moldata)
     modelpath = 'log/checkpoint/'
@@ -198,7 +198,8 @@ if __name__ == '__main__':
         'device': args.device,
         'pretrain': args.pretrain,
         'task_embs': args.task_file,
-        'pi': pi
+        'pi': pi,
+        'ft': False
     }
     
     fold_result = main(modelparm, moldata, pi, device, args.train_epoch, args.seed, args.fold, args.batch_size, rate, modelpath, logger, args.lr, args.metric, savem)
