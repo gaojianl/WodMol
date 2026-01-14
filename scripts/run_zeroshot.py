@@ -95,6 +95,7 @@ if __name__ == '__main__':
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size')
     parser.add_argument('--pretrain', type=str, default='checkpoints/model_CSLoss.pkl', help='Path to model weights')
     parser.add_argument('--pi', default=None, help='Task ID (int) for known tasks, None for zero-shot')
+    parser.add_argument('--ft', default=False, type=str, help='Set True if you are using a fine-tuned checkpoint')
     parser.add_argument('--rela', type=str, default='False', help='Whether to use relation info (True/False)')
     parser.add_argument('--metric', type=str, choices=['rmse', 'mae'], default='mae', help='Metric')
     parser.add_argument('--seed', type=int, default=426, help="Random seed")
@@ -115,6 +116,13 @@ if __name__ == '__main__':
         pi = None
     else:
         pi = int(args.pi)
+    ft_lower = args.ft.lower().strip()
+    if ft_lower in ['True', 'true']:
+        ft = True
+    elif ft_lower in ['False', 'false']:
+        ft = False
+    else:
+        raise ValueError(f"Invalid value for --ft: {args.ft}")
     
     logf = f'log/Test_{moldata}.log'
     logger = get_logger(logf, moldata)
@@ -135,7 +143,8 @@ if __name__ == '__main__':
         'device': args.device,
         'pretrain': args.pretrain,
         'task_embs': args.task_file,
-        'pi': pi
+        'pi': pi,
+        'ft': ft
     }
     
     main(modelparm, moldata, pi, device, args.seed, args.batch_size, logger, args.metric)
