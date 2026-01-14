@@ -13,13 +13,14 @@ class MolNet(nn.Module):
         tasks, output_dim, attn_layers, cond_dim, cond_totlen, dropout, input_dim, rela, device = modelparm['tasks'], modelparm['output_dim'], modelparm['attn_layers'], modelparm['cond_dim'], modelparm['cond_totlen'], modelparm['dropout'], modelparm['input_dim'], modelparm['rela'], modelparm['device']
         task_embs_file = modelparm['task_embs']
         pi = modelparm['pi']
+        ft = modelparm['ft']
         self.device = device
         self.rela = rela
         self.task_embs = torch.tensor(np.load(task_embs_file), dtype=torch.float32)
         if pi is not None:
             self.virtual_node_embedding = nn.Parameter(torch.randn(19776, output_dim))
         else:
-            self.virtual_node_embedding = nn.Parameter(torch.randn(1, output_dim))
+            self.virtual_node_embedding = nn.Parameter(torch.zeros(1, output_dim))
         self.tlin = nn.Sequential(
             nn.Linear(1024, 1024),
             nn.Dropout(dropout),
@@ -46,7 +47,10 @@ class MolNet(nn.Module):
             if pi is not None:
                 modules_to_load = ['emb', 'emb_org', 'tlin', 'films', 'Ctrans', 'readout', 'moe', 'pff', 'virtual_node_embedding']
             else:
-                modules_to_load = ['emb', 'emb_org', 'tlin', 'films', 'Ctrans', 'readout', 'moe', 'pff']
+                if ft:
+                    modules_to_load = ['emb', 'emb_org', 'tlin', 'films', 'Ctrans', 'readout', 'moe', 'pff', 'virtual_node_embedding']
+                else:
+                    modules_to_load = ['emb', 'emb_org', 'tlin', 'films', 'Ctrans', 'readout', 'moe', 'pff']
             filtered_state_dict = {k: v for k, v in state_dict.items() if any(k.startswith(module) for module in modules_to_load)}
             model_dict.update(filtered_state_dict)
             self.load_state_dict(model_dict)
