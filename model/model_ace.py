@@ -84,7 +84,6 @@ class MolNet(nn.Module):
         else:
             vne = self.virtual_node_embedding[pi].unsqueeze(0).repeat(batch_size, 1)
 
-        # DoubGNN2
         x_new = self.emb(x, edge_index, edge_attr, batch, cond_flat, self.films, task_embs) 
         x_org = self.emb_org(x, edge_index, edge_attr, batch, vne) 
 
@@ -99,3 +98,4 @@ class MolNet(nn.Module):
         else:
             rela = None
         return logits.squeeze(-1), rela, ms
+
