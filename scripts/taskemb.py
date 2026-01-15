@@ -126,7 +126,7 @@ t₁/₂, or half-life, is the time required for the concentration of a drug in 
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='CondMolg')
+    parser = argparse.ArgumentParser(description='WodMol')
     parser.add_argument('--moldata', type=str, required=True, help='Dataset name (e.g., CHEMBL218)')
     parser.add_argument('--target', type=str, required=True, help='Target/property name (e.g., AKT)')
     parser.add_argument('--keyword', type=str, default='inhibitor', choices=['inhibitor', 'agonist', 'degrader', 'modulator', 'allosteric inhibitor', 'allosteric modulator', 'adme'], help='MOE of molecule (default: inhibitor)')
@@ -181,4 +181,5 @@ if __name__ == '__main__':
     sentence_embedding = last_hidden_state.mean(dim=1).cpu().numpy()
     
     embs = descmodel.transform(sentence_embedding)
+
     np.save(args.task_file, embs, allow_pickle=True)
