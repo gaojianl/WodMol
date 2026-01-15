@@ -237,7 +237,7 @@ def process_dataset(moldata_name, data_type, llm_path, device, numtasks, label_c
     return True
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='CondMol Preprocessing')
+    parser = argparse.ArgumentParser(description='WodMol Preprocessing')
     parser.add_argument('--moldata', type=str, required=True, help='Dataset name (e.g., CHEMBL218)')
     parser.add_argument('--device', type=str, default='cuda:0', help='Device (default: cuda:0)')
     parser.add_argument('--numtasks', type=int, default=1, help='Number of tasks')
@@ -281,3 +281,4 @@ if __name__ == '__main__':
             model=model,
             descmodel=descmodel
         )
+
