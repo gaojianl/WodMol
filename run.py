@@ -1,5 +1,5 @@
 """
-CondMol
+WodMol
 Select script to execute via --mode parameter, other parameters are passed through normally
 """
 
@@ -12,7 +12,7 @@ import importlib.util
 
 def main():
     parser = argparse.ArgumentParser(
-        description='CondMol Unified Entry Script',
+        description='WodMol Unified Entry Script',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Available mode options:
@@ -95,4 +95,5 @@ Examples:
 
 
 if __name__ == '__main__':
+
     main()
