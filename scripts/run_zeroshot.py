@@ -14,7 +14,7 @@ def testing(model, test_loader, loss_f, metric, device, resu, task_i, prompt_i):
     loss_record, record_count = 0., 0.
     preds = torch.Tensor([])
     tars = torch.Tensor([])
-    smiles_list = []  # 新增：用于存储 SMILES
+    smiles_list = [] 
     
     model.eval()
     with torch.no_grad():
@@ -77,7 +77,6 @@ def main(modelparm, dataset, pi, device, seed, batch_size, logger, met):
     
     logger.info(f"Test Finished. Loss: {loss:.4f}  MAE: {test_mae:.4f}")
 
-    # 保存结果到 CSV
     output_file = f'{dataset}_pred.csv'
     df = pd.DataFrame({
         'SMILES': smiles,
@@ -89,7 +88,7 @@ def main(modelparm, dataset, pi, device, seed, batch_size, logger, met):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='CondMol')
+    parser = argparse.ArgumentParser(description='WodMol')
     parser.add_argument('--moldata', type=str, required=True, help='Dataset name (e.g., CHEMBL218)')
     parser.add_argument('--device', type=str, default='cuda:0', help='Device (default: cuda:0)')
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size')
@@ -148,3 +147,4 @@ if __name__ == '__main__':
     }
     
     main(modelparm, moldata, pi, device, args.seed, args.batch_size, logger, args.metric)
+
