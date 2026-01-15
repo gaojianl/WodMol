@@ -138,7 +138,7 @@ def main(modelparm, dataset, pi, device, train_epoch, seed, fold, batch_size, ra
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='CondMol')
+    parser = argparse.ArgumentParser(description='WodMol')
     parser.add_argument('--moldata', type=str, default='CHEMBL218', help='Dataset name')
     parser.add_argument('--numtasks', type=int, default=1, help='Number of tasks (default: 1).')
     parser.add_argument('--device', type=str, default='cuda:0', help='Which gpu to use if any (default: cuda:0)')
@@ -204,3 +204,4 @@ if __name__ == '__main__':
     
     fold_result = main(modelparm, moldata, pi, device, args.train_epoch, args.seed, args.fold, args.batch_size, rate, modelpath, logger, args.lr, args.metric, savem)
     
+
