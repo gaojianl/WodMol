@@ -1,8 +1,8 @@
-# CondMol
+# WodMol
 
 ![](img/Framework.jpg)
 
-This is a Pytorch implementation of CondMol
+This is a Pytorch implementation of WodMol
 Information regarding the activity pre-training dataset can be found in the `dataset/` folder.
 Pre-trained model parameters can be downloaded from [Google Drive](https://drive.google.com/file/d/1BjL2PjrnE0UVObQKFWRz8Oioe-rbkZ21/view?usp=sharing), then extracted to the `checkpoints/` folder:
 * **`model.pkl`**: Trained without considering censored data information.
@@ -21,7 +21,7 @@ Please ensure your hardware (specifically GPU VRAM) is sufficient to support run
 You can execute the following command to create the conda environment:
 ```
 conda create --name ConMol --file requirements.yml
-conda activate CondMol
+conda activate WodMol
 ```
 You Need to Get Access to Llama-3.1 from HuggingFace
 
@@ -173,6 +173,7 @@ python run.py --mode zeroshot \
 
 
 ## Citation
+
 
 
 
