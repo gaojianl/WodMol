@@ -234,7 +234,7 @@ def presmi(smi):
         return None 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='CondMol')
+    parser = argparse.ArgumentParser(description='WodMol')
     parser.add_argument('--moldata', type=str, required=True, help='Dataset name (e.g., CHEMBL218)')
     parser.add_argument('--device', type=str, default='cuda:0', help='Device (default: cuda:0)')
     parser.add_argument('--testing', type=str, default=False, help='True: Only process the test dataset.')
@@ -249,3 +249,4 @@ if __name__ == '__main__':
     if args.testing in ['False', 'false']:
         get_cond('dataset/raw/'+args.moldata+'_train.csv', pipeline)
     get_cond('dataset/raw/'+args.moldata+'_test.csv', pipeline)
+
