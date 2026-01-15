@@ -150,7 +150,7 @@ def main(modelparm, dataset, device, train_epoch, seed, fold, batch_size, rate, 
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='CondMol')
+    parser = argparse.ArgumentParser(description='WodMol')
     parser.add_argument('--moldata', type=str, default='CHEMBL214', help='Dataset name')
     parser.add_argument('--numtasks', type=int, default=1, help='Number of tasks (default: 1).')
     parser.add_argument('--device', type=str, default='cuda:0', help='Which gpu to use if any (default: cuda:0)')
