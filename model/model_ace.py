@@ -20,7 +20,7 @@ class MolNet(nn.Module):
         if pi is not None:
             self.virtual_node_embedding = nn.Parameter(torch.randn(19776, output_dim))
         else:
-            self.virtual_node_embedding = nn.Parameter(torch.zeros(1, output_dim))
+            self.virtual_node_embedding = nn.Parameter(torch.randn(1, output_dim))
         self.tlin = nn.Sequential(
             nn.Linear(1024, 1024),
             nn.Dropout(dropout),
@@ -98,4 +98,5 @@ class MolNet(nn.Module):
         else:
             rela = None
         return logits.squeeze(-1), rela, ms
+
 
