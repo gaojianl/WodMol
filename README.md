@@ -42,7 +42,7 @@ python run.py --mode zeroshot \
             --seed 426 \                              # Random seed 
             --device cuda:0                           # Specify which GPU to use
 ```
-After running the above command, the prediction results will be automatically saved to the demo_pred.csv file in the root directory.
+After running the above command, the prediction results will be automatically saved to the demo_pred.csv file in the root directory. This process may take tens of seconds to a few minutes depending on your hardware configuration
 
 ### 1. Dataset Preparation
 #### a. Generate Task Embeddings
