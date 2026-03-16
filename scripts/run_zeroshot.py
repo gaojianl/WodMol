@@ -61,18 +61,11 @@ def main(modelparm, dataset, pi, device, seed, batch_size, logger, met):
     project_root = os.path.dirname(script_dir)
     dataset_path = os.path.join(project_root, 'dataset')
     
-    trainset = MolData(root=dataset_path, dataset=f'{dataset}_train')
     testset = MolData(root=dataset_path, dataset=f'{dataset}_test')
     
     test_loader = DataLoader(testset, batch_size=batch_size, shuffle=False)
     
     model = MolNet(modelparm).to(device)
-    if modelparm.get('pretrain') is not None:
-        state_dict = torch.load(modelparm['pretrain'], weights_only=True, map_location=device)
-        model_dict = model.state_dict()
-        if 'virtual_node_embedding' in state_dict:
-            model_dict['virtual_node_embedding'] = state_dict['virtual_node_embedding']
-            model.load_state_dict(model_dict, strict=False)
     loss, test_mae, preds, tars, smiles = testing(model, test_loader, loss_f, metric, device, True, None, pi)
     
     logger.info(f"Test Finished. Loss: {loss:.4f}  MAE: {test_mae:.4f}")
