@@ -35,7 +35,7 @@ We provide a **small test sample** in the project for quick verification of the 
 ```
 python run.py --mode zeroshot \
             --moldata demo \                          # Dataset name
-            --pretrain checkpoints/model_CSLoss.pkl \ # Path to pre-trained weights
+            --pretrain checkpoints/model.pkl \        # Path to pre-trained weights
             --pi None \                               # Task ID
             --ft False \                              # Set True if you are using a fine-tuned checkpoint
             --task_file demo.npy \                    # Path to the task embedding file
@@ -139,7 +139,7 @@ The following is an example command for fine-tuning on the C218 dataset. **Note 
 ```
 python run.py --mode finetune \
     --moldata CHEMBL218 \                     # Dataset name (Look for {name}_train.csv in dataset/)
-    --pretrain checkpoints/model_CSLoss.pkl \ # Path to pre-trained weights
+    --pretrain checkpoints/model.pkl \        # Path to pre-trained weights
     --pi None \                               # Task ID: Integer for known tasks, None for unknown/non-protein
     --rela False \                            # Relation: Set True if dataset has censored data (>, <)
     --task_file CHEMBL218.npy \               # Path to task embedding file
@@ -179,7 +179,7 @@ Before running prediction, please ensure that your testing datasets and taskembe
 ```
 python run.py --mode zeroshot \
     --moldata CHEMBL218 \                     # Dataset name (Look for {name}_test.csv in dataset/)
-    --pretrain checkpoints/model_CSLoss.pkl \ # Path to pre-trained weights (model_CSLoss.pkl is recommended) or fine-tuned checkpoint file saved in Section 2
+    --pretrain checkpoints/model.pkl \ # Path to pre-trained weights (model.pkl is recommended) or fine-tuned checkpoint file saved in Section 2
     --pi None \                               # Task ID: Integer for known tasks, None for unknown/Zero-shot
     --ft False \                              # Set True if you are using a fine-tuned checkpoint
     --task_file tasks.npy \                   # Path to the task embedding file (.npy)
