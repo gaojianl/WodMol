@@ -42,7 +42,7 @@ python run.py --mode zeroshot \
             --seed 426 \                              # Random seed 
             --device cuda:0                           # Specify which GPU to use
 ```
-
+After running the above command, the prediction results will be automatically saved to the demo_pred.csv file in the root directory.
 
 ### 1. Dataset Preparation
 #### a. Generate Task Embeddings
@@ -186,7 +186,7 @@ python run.py --mode zeroshot \
     --seed 426 \                              # Random seed for reproducibility
     --device cuda:0                           # Specify which GPU to use
 ```
-
+After running the above command, the prediction results will be automatically saved to the {moldata}_pred.csv file in the root directory (e.g., CHEMBL218_pred.csv when --moldata is set to CHEMBL218).
 
 ## Citation
 
