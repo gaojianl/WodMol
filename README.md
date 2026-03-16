@@ -12,7 +12,7 @@ Pre-trained model parameters can be downloaded from [Google Drive](https://drive
 ## Installation Guide
 
 ### Prerequisites
-This project has been successfully tested on Debian GNU/Linux 12 (Bookworm) and Windows 11.
+This project has been successfully tested on Debian GNU/Linux 12 (Bookworm).
 Please ensure your hardware (specifically GPU VRAM) is sufficient to support running **Llama-3.1-8B-Instruct** at a minimum. 
 * **Minimum:** Support for the 8B model.
 * **Recommended:** We strongly encourage using larger versions of the model for superior performance.
@@ -31,6 +31,7 @@ Then, you need to download and deploy the LlAMA-3.1 model.
 ## Usage
 
 ### 0. Quick Demo 
+We provide a **small test sample** in the project for quick verification of the running environment and core functions. No custom dataset preparation is required, just run the following command directly:
 ```
 python run.py --mode zeroshot \
             --moldata demo \                          # Dataset name
