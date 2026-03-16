@@ -21,7 +21,7 @@ Please ensure your hardware (specifically GPU VRAM) is sufficient to support run
 ### Setup
 You can execute the following command to create the conda environment:
 ```
-conda create --name ConMol --file requirements.yml
+conda create --name WodMol --file requirements.yml
 conda activate WodMol
 ```
 This process will automatically install all dependencies and may take around 10 to 20 minutes depending on your network speed.
