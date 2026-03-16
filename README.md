@@ -30,6 +30,20 @@ Then, you need to download and deploy the LlAMA-3.1 model.
 
 ## Usage
 
+### 0. Quick Demo 
+```
+python run.py --mode zeroshot \
+            --moldata demo \                          # Dataset name
+            --pretrain checkpoints/model_CSLoss.pkl \ # Path to pre-trained weights
+            --pi None \                               # Task ID
+            --ft False \                              # Set True if you are using a fine-tuned checkpoint
+            --task_file demo.npy \                    # Path to the task embedding file
+            --batch_size 32 \                         # Input batch size
+            --seed 426 \                              # Random seed 
+            --device cuda:0                           # Specify which GPU to use
+```
+
+
 ### 1. Dataset Preparation
 #### a. Generate Task Embeddings
 Before training, you need to generate a task embedding file (`.npy`). You have two options to generate the description:
