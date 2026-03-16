@@ -9,9 +9,10 @@ Pre-trained model parameters can be downloaded from [Google Drive](https://drive
 * **`model_CSLoss.pkl`**: Trained incorporating censored data information.
 * **`model_noleakage.pkl`**: The pre-training dataset excludes assay data related to the 29 targets in CondACT (to avoid data leakage).
 
-## Installation
+## Installation Guide
 
 ### Prerequisites
+This project has been successfully tested on Debian GNU/Linux 12 (Bookworm) and Windows 11.
 Please ensure your hardware (specifically GPU VRAM) is sufficient to support running **Llama-3.1-8B-Instruct** at a minimum. 
 * **Minimum:** Support for the 8B model.
 * **Recommended:** We strongly encourage using larger versions of the model for superior performance.
@@ -23,7 +24,8 @@ You can execute the following command to create the conda environment:
 conda create --name ConMol --file requirements.yml
 conda activate WodMol
 ```
-You Need to Get Access to Llama-3.1 from HuggingFace
+This process will automatically install all dependencies and may take around 10 to 20 minutes depending on your network speed.
+Then, you need to download and deploy the LlAMA-3.1 model.
 
 
 ## Usage
@@ -41,7 +43,7 @@ python run.py --mode taskemb \
     --target "Cannabinoid receptor 1" \ # Target name (e.g., "AKT1") or Property name (e.g., "Solubility")
     --keyword inhibitor \               # MOA: inhibitor, agonist, degrader, modulator, allosteric inhibitor/modulator, or "adme"
     --task_file tasks_AKT.npy \         # Output path for the generated embedding (.npy)
-    --llm_path /t9k/mnt/.cache/kagglehub/models/metaresearch/llama-3.1/transformers/8b-instruct/1 \        # Path of the llama file
+    --llm_path /YourPath/.cache/kagglehub/models/metaresearch/llama-3.1/transformers/8b-instruct/1 \        # Path of the llama file
     --device cuda:0                     # Device to run the LLM
 ```
 
@@ -52,7 +54,7 @@ python run.py --mode taskemb \
     --target UnknownTarget \           # Required argument (placeholder name is fine here)
     --task_desc desc.txt \             # Path to your custom description text file
     --task_file tasks_custom.npy \     # Output path for the generated embedding (.npy)
-    --llm_path /t9k/mnt/.cache/kagglehub/models/metaresearch/llama-3.1/transformers/8b-instruct/1 \        # Path of the llama file
+    --llm_path /YourPath/.cache/kagglehub/models/metaresearch/llama-3.1/transformers/8b-instruct/1 \        # Path of the llama file
     --device cuda:0                    # Device to run the embedding model
 ```
 
@@ -72,7 +74,7 @@ python run.py --mode condemb \
     --moldata CHEMBL218 \              # Dataset name (Processing {name}_train.csv and {name}_test.csv)
     --device cuda:0 \                  # Device to run the extraction model
     --testing False                    # Set True if you only want to process the test/zeroshot dataset
-    --llm_path /t9k/mnt/.cache/kagglehub/models/metaresearch/llama-3.1/transformers/8b-instruct/1 \        # Path of the llama file
+    --llm_path /YourPath/.cache/kagglehub/models/metaresearch/llama-3.1/transformers/8b-instruct/1 \        # Path of the llama file
 ```
 > [!IMPORTANT]
 > **🔥 Advanced: Manual Mode (Skip Step 2)**
@@ -94,7 +96,7 @@ python run.py --mode preprocess \
     --label_col standard_value \       # Name of label column(s). For multi-task, use commas to split: IC50,EC50,Ki
     --device cuda:0 \                  # Device
     --testing False                    # Set True to process only the test dataset
-    --llm_path /t9k/mnt/.cache/kagglehub/models/metaresearch/llama-3.1/transformers/8b-instruct/1 \        # Path of the llama file
+    --llm_path /YourPath/.cache/kagglehub/models/metaresearch/llama-3.1/transformers/8b-instruct/1 \        # Path of the llama file
 ```
 
 
