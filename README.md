@@ -4,7 +4,7 @@
 
 This is a Pytorch implementation of WodMol
 Information regarding the activity pre-training dataset can be found in the `dataset/` folder.
-Pre-trained model parameters can be downloaded from [Google Drive](https://drive.google.com/file/d/1BjL2PjrnE0UVObQKFWRz8Oioe-rbkZ21/view?usp=sharing), then extracted to the `checkpoints/` folder:
+Pre-trained model parameters can be downloaded from [Zenodo](https://zenodo.org/records/20078259) or [Google Drive](https://drive.google.com/file/d/1BjL2PjrnE0UVObQKFWRz8Oioe-rbkZ21/view?usp=sharing), then extracted to the `checkpoints/` folder:
 * **`model.pkl`**: Trained without considering censored data information.
 * **`model_CSLoss.pkl`**: Trained incorporating censored data information.
 * **`model_noleakage.pkl`**: The pre-training dataset excludes assay data related to the 29 targets in CondACT (to avoid data leakage).
