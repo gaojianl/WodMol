@@ -8,6 +8,7 @@ Pre-trained model parameters can be downloaded from [Zenodo](https://zenodo.org/
 * **`model.pkl`**: Trained without considering censored data information.
 * **`model_CSLoss.pkl`**: Trained incorporating censored data information.
 * **`model_noleakage.pkl`**: The pre-training dataset excludes assay data related to the 29 targets in CondACT (to avoid data leakage).
+You can simply run the `python download.py` to do this.
 
 ## Installation Guide
 
